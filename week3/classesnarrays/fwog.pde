@@ -14,7 +14,7 @@ class fwog{
   image(ugly,x,y,75,75);
  }
  
- void Press(){
+ void press(){
    
    
   if (mouseX >= x && mouseX <= x+width && //checking whether the mouse is over the image

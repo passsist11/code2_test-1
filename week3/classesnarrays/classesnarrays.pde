@@ -6,16 +6,12 @@
 PImage lost;
 PImage ugly;
 fwog c, a, d, b, e, g, f, h, j, z;
-fwog[][] prince = { {c, a}, 
-                   {d, b}, 
-                   {e, g}, 
-                   {f, h}, 
-                   {j, z}
-                  };
- 
+ fwog [] prince = new fwog[10];
 hart k,l,m,n,o,p,q,r,s,t,u;
 hart[] grouplove ={l,m,n,o,p,q,r,s,t,u};
 
+
+ArrayList<hart> myHearts;
 
 void setup(){
   size(600,600);
@@ -33,17 +29,23 @@ void setup(){
   t = new hart(random(0, 600),random(50,500),lost);
   u = new hart(random(0, 600),random(50,500),lost);
   
+myHearts = new ArrayList<hart>();
+  for(int i =0; i <prince.length; i++){
+    prince[i] = new fwog(i*20, i*5, ugly);
+  }
   
-  c = new fwog(0, 150, ugly);
-  a = new fwog(0, 25, ugly);
-  d = new fwog(0, 50, ugly);
-  b = new fwog(0, 75, ugly);
-  e = new fwog(0,100,ugly);
-  g = new fwog(0,5,ugly);
-  f = new fwog(0,10,ugly);
-  h = new fwog(0,15, ugly);
-  j = new fwog(0,20,ugly);
-  z = new fwog(0,200,ugly);
+  
+  
+  //c = new fwog(0, 150, ugly);
+  //a = new fwog(0, 25, ugly);
+  //d = new fwog(0, 50, ugly);
+  //b = new fwog(0, 75, ugly);
+  //e = new fwog(0,100,ugly);
+  //g = new fwog(0,5,ugly);
+  //f = new fwog(0,10,ugly);
+  //h = new fwog(0,15, ugly);
+  //j = new fwog(0,20,ugly);
+  //z = new fwog(0,200,ugly);
   // for(int i = 0; i < grouplove.length; i++) {
   //   grouplove[i].display();
   // }
@@ -61,6 +63,11 @@ void draw(){
    noStroke();
    rect(200,100,150,150); //head
 
+   
+   ellipse(375,323, 100, 30);
+   quad(410,314,420,250,455,255,420,330);
+   ellipse(175,323,100,30);
+   quad(145,314,120,250,95,255,130,330);
    
    fill(255);
    rect(200,250,150,170);//body
@@ -85,7 +92,17 @@ void draw(){
    rect(275,420,75,80); //pants
    
   noFill();
-  arc(275, 160, 80, 50, 0, PI/2); //how to make it a frown
+  arc(275, 160, 80, 50, 0, PI); //how to make it a frown
+  
+
+  fill(255);
+  quad(250, 180, 265, 185, 260, 205, 250, 210);
+  quad(266, 186, 280, 186, 280, 210, 270, 210); 
+  quad(283, 186, 296, 184, 298, 206, 288, 209);//teeth
+  
+ 
+  
+  
   
   
      //translate(mouseX - 50, mouseY - 50); //how to only have this work on the heart
@@ -108,10 +125,15 @@ endShape();
  //i like the way its flickering, looks like tron
  
 k.display();
-   
- 
-   
-  //println (mouseX + ", " + mouseY);
+   for(int i = 0; i<prince.length; i++){
+     prince[i].display();
+     prince[i].press();
+   }
+   for(int i = 0; i<myHearts.size(); i++){
+     hart h = myHearts.get(i);
+     h.display();
+ // println (mouseX + ", " + mouseY);
+   }
 
   
   //i used sketch 1 from my practice_test folder last semester
@@ -133,13 +155,14 @@ k.display();
 void mousePressed(){
   //l.click();
   k.click();
+  myHearts.add(new hart(mouseX, mouseY, lost));
 }
 
 void keyPressed(){
    if (key == 'u' || key == 'U') {
-    for(int i = 0; i < prince.length; i++) {
-    prince[i][0].display();
-    }  
+    //for(int i = 0; i < prince.length; i++) {
+    //prince[i][0].display();
+    //}  
 }
 
 }
