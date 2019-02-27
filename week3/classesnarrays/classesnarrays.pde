@@ -105,7 +105,7 @@ void draw(){
   
   
   
-     //translate(mouseX - 50, mouseY - 50); //how to only have this work on the heart
+//translate(mouseX - 50, mouseY - 50); //how to only have this work on the heart
 fill(102,0,0); //burgundy
 beginShape(TRIANGLE_STRIP); //start of tie like shape
 vertex(240, 300); //bottom left point x-10, y+50
